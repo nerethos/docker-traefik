@@ -23,7 +23,8 @@
   # :: prepare image
     RUN set -ex; \
       mkdir -p ${APP_ROOT}/etc; \
-      apk --no-cache upgrade;
+      apk --no-cache upgrade; \
+      apk --no-cache add ca-certificates;
 
   # :: set home directory for existing docker user
     RUN set -ex; \
