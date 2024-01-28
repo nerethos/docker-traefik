@@ -9,7 +9,7 @@
       tar
 
   RUN \
-  echo "**** install stash ****" && \
+  echo "**** traefik ****" && \
     if [ -z ${TRAEFIK_LATEST+x} ]; then \
       TRAEFIK_LATEST=$(curl -sX GET "https://api.github.com/repos/traefik/traefik/releases/latest" \
       | awk '/tag_name/{print $4;exit}' FS='[""]'); \
@@ -24,7 +24,6 @@
 # :: Header
   FROM nerethos/alpine:latest
   ENV APP_ROOT=/traefik
-  COPY --from=util /util/linux/shell/log-json /usr/local/bin
   COPY --from=build /usr/local/bin/ /usr/local/bin
 
 # :: Run

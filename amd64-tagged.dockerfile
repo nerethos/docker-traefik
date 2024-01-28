@@ -15,7 +15,6 @@
 # :: Header
   FROM nerethos/alpine:latest
   ENV APP_ROOT=/traefik
-  COPY --from=util /util/linux/shell/log-json /usr/local/bin
   COPY --from=build /usr/local/bin/ /usr/local/bin
 
 # :: Run
