@@ -1,14 +1,3 @@
-# :: Util
-  FROM alpine as util
-
-  USER root
-
-  RUN set -ex; \
-    apk --no-cache add \
-      git; \
-    git clone https://github.com/11notes/util.git;
-
-
 # :: Build
   FROM alpine AS build
   ENV APP_VERSION=v2.10.6
