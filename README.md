@@ -15,7 +15,7 @@ docker run --name traefik \
   --network host \
   -v .../docker.sock:/var/run/docker.sock \
   -v .../var:/traefik/var \
-  -d 11notes/traefik:[tag]
+  -d nerethos/traefik:[tag]
 ```
 Allow non-root ports < 1024 via `echo "net.ipv4.ip_unprivileged_port_start=80" > /etc/sysctl.d/traefik.conf` for using :80 and :443
 
