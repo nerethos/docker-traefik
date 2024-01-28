@@ -1,0 +1,43 @@
+global:
+  checkNewVersion: false
+  sendAnonymousUsage: false
+
+accessLog:
+  filePath: "./data/logs/access.log"
+  bufferingSize: 100
+  filters:
+    statusCodes:
+      - "300-302"
+      - "400-451"
+      - "500-511"
+    retryAttempts: true
+    minDuration: "10ms"
+
+api:
+  dashboard: true
+  debug: true
+
+log:
+  level: INFO
+  format: json
+
+providers:
+  docker:
+    exposedByDefault: false
+  file:
+    directory: /traefik/var
+
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+
+  websecure:
+    address: ":443"
+
+serversTransport:
+  insecureSkipVerify: true
